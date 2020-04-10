@@ -49,6 +49,10 @@ public class OrderLines {
                 .reduce(0, Integer::sum);
     }
 
+    public List<OrderLine> getOrderLines() {
+        return orderLines;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;

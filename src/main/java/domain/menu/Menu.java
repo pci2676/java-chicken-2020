@@ -10,19 +10,19 @@ import java.util.Objects;
  * 3. 필드의 접근제어자는 private 으로 유지
  */
 public class Menu {
-    private final Long number;
+    private final Integer number;
     private final String name;
     private final Category category;
     private final int price;
 
-    public Menu(final Long number, final String name, final Category category, final int price) {
+    public Menu(final Integer number, final String name, final Category category, final int price) {
         this.number = number;
         this.name = name;
         this.category = category;
         this.price = price;
     }
 
-    public boolean equalNumber(final Long number) {
+    public boolean equalNumber(final Integer number) {
         return this.number.equals(number);
     }
 

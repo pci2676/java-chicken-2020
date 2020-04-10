@@ -16,7 +16,7 @@ class OrderLinesTest {
     @Test
     void name() {
         //given
-        Menu menu = MenuRepository.findByNumber(1L);
+        Menu menu = MenuRepository.findByNumber(1);
         OrderLine givenOrderLine = new OrderLine(menu, 1);
         OrderLines orderLines = new OrderLines(new ArrayList<>(Arrays.asList(givenOrderLine)));
 
@@ -31,12 +31,12 @@ class OrderLinesTest {
     @Test
     void name1() {
         //given
-        Menu menu = MenuRepository.findByNumber(1L);
+        Menu menu = MenuRepository.findByNumber(1);
         OrderLine givenOrderLine = new OrderLine(menu, 1);
         OrderLines orderLines = new OrderLines(new ArrayList<>(Arrays.asList(givenOrderLine)));
 
         //when
-        Menu otherMenu = MenuRepository.findByNumber(2L);
+        Menu otherMenu = MenuRepository.findByNumber(2);
         orderLines.add(new OrderLine(otherMenu, 1));
 
         //then
@@ -47,11 +47,11 @@ class OrderLinesTest {
     @Test
     void name2() {
         //given
-        Menu menu1 = MenuRepository.findByNumber(1L);
+        Menu menu1 = MenuRepository.findByNumber(1);
         int amount1 = 2;
         OrderLine orderLine1 = new OrderLine(menu1, amount1);
 
-        Menu menu2 = MenuRepository.findByNumber(2L);
+        Menu menu2 = MenuRepository.findByNumber(2);
         int amount2 = 2;
         OrderLine orderLine2 = new OrderLine(menu2, amount2);
 

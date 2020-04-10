@@ -5,6 +5,7 @@ import domain.orders.OrderLine;
 import domain.orders.Orders;
 import domain.payment.PaymentMethod;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -13,14 +14,14 @@ import java.util.Objects;
  * 2. 멤버 변수 추가시 접근 제어자 private
  */
 public class Table {
-    private final Long number;
-    private final Orders orders = Orders.empty();
+    private final Integer number;
+    private Orders orders = Orders.empty();
 
-    public Table(final Long number) {
+    public Table(final Integer number) {
         this.number = number;
     }
 
-    public boolean equalNumber(final Long number) {
+    public boolean equalNumber(final Integer number) {
         return this.number.equals(number);
     }
 
@@ -35,6 +36,18 @@ public class Table {
     public double calculatePrice(PaymentMethod paymentMethod) {
         checkOrdersEmpty();
         return DiscountGroup.discount(this.orders, paymentMethod);
+    }
+
+    public void clear() {
+        orders = Orders.empty();
+    }
+
+    public int getNumber() {
+        return this.number;
+    }
+
+    public List<OrderLine> getOrders() {
+        return orders.getOrderLines();
     }
 
     @Override

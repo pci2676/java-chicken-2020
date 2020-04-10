@@ -9,19 +9,19 @@ public class TableRepository {
     private static final List<Table> tables = new ArrayList<>();
 
     static {
-        tables.add(new Table(1L));
-        tables.add(new Table(2L));
-        tables.add(new Table(3L));
-        tables.add(new Table(5L));
-        tables.add(new Table(6L));
-        tables.add(new Table(8L));
+        tables.add(new Table(1));
+        tables.add(new Table(2));
+        tables.add(new Table(3));
+        tables.add(new Table(5));
+        tables.add(new Table(6));
+        tables.add(new Table(8));
     }
 
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
 
-    public static final Table findByNumber(Long number) {
+    public static final Table findByNumber(Integer number) {
         return tables().stream()
                 .filter(table -> table.equalNumber(number))
                 .findFirst()

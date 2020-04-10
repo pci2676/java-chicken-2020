@@ -15,7 +15,7 @@ class OrderLineTest {
     @Test
     void name() {
         //given
-        Menu menu = MenuRepository.findByNumber(1L);
+        Menu menu = MenuRepository.findByNumber(1);
         int amount = 1;
 
         //when
@@ -29,7 +29,7 @@ class OrderLineTest {
     @Test
     void name4() {
         //given
-        Menu menu = MenuRepository.findByNumber(1L);
+        Menu menu = MenuRepository.findByNumber(1);
         int givenAmount = 1;
         OrderLine orderLine = new OrderLine(menu, givenAmount);
 
@@ -44,12 +44,12 @@ class OrderLineTest {
     @Test
     void name5() {
         //given
-        Menu menu = MenuRepository.findByNumber(1L);
+        Menu menu = MenuRepository.findByNumber(1);
         int givenAmount = 1;
         OrderLine orderLine = new OrderLine(menu, givenAmount);
 
         //when
-        Menu otherMenu = MenuRepository.findByNumber(2L);
+        Menu otherMenu = MenuRepository.findByNumber(2);
         OrderLine otherOrderLine = new OrderLine(otherMenu, 1);
 
         //then
@@ -63,7 +63,7 @@ class OrderLineTest {
     void name6() {
         //given
         int defaultPrice = 1000;
-        Menu menu = new Menu(1L, "test", Category.CHICKEN, defaultPrice);
+        Menu menu = new Menu(1, "test", Category.CHICKEN, defaultPrice);
         int amount = 2;
         OrderLine orderLine = new OrderLine(menu, amount);
 
@@ -79,7 +79,7 @@ class OrderLineTest {
     @Test
     void name7() {
         //given
-        Menu menu = MenuRepository.findByNumber(1L);
+        Menu menu = MenuRepository.findByNumber(1);
         int amount = 2;
         OrderLine orderLine = new OrderLine(menu, amount);
 

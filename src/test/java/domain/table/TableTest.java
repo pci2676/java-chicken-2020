@@ -19,7 +19,7 @@ class TableTest {
     @Test
     void name() {
         //given
-        Table table = TableRepository.findByNumber(1L);
+        Table table = TableRepository.findByNumber(1);
 
         //then
         assertThat(table.hasOrder()).isEqualTo(false);
@@ -29,10 +29,10 @@ class TableTest {
     @Test
     void name2() {
         //given
-        Table table = TableRepository.findByNumber(1L);
+        Table table = TableRepository.findByNumber(1);
 
         //when
-        Menu menu = MenuRepository.findByNumber(1L);
+        Menu menu = MenuRepository.findByNumber(1);
         table.addOrder(new OrderLine(menu, 1));
 
         //then
@@ -43,7 +43,7 @@ class TableTest {
     @Test
     void name3() {
         //given
-        Table table = new Table(1L);
+        Table table = new Table(1);
 
         //then
         assertThatThrownBy(() -> table.calculatePrice(PaymentMethod.CASH))
@@ -55,8 +55,8 @@ class TableTest {
     @Test
     void name4() {
         //given
-        Table table = new Table(1L);
-        Menu menu = new Menu(1L, "test", Category.CHICKEN, 11000);
+        Table table = new Table(1);
+        Menu menu = new Menu(1, "test", Category.CHICKEN, 11000);
         OrderLine orderLine = new OrderLine(menu, 10);
         table.addOrder(orderLine);
 
@@ -72,8 +72,8 @@ class TableTest {
     @CsvSource(value = {"10,CARD,100000", "10,CASH,95000", "9,CARD,99000", "9,CASH,94050"})
     void name5(int amount, PaymentMethod paymentMethod, double expect) {
         //given
-        Table table = new Table(1L);
-        Menu menu = new Menu(1L, "test", Category.CHICKEN, 11000);
+        Table table = new Table(1);
+        Menu menu = new Menu(1, "test", Category.CHICKEN, 11000);
         OrderLine orderLine = new OrderLine(menu, amount);
         table.addOrder(orderLine);
 

@@ -53,4 +53,9 @@ public class OrderLine {
     public int hashCode() {
         return Objects.hash(menu, orderAmount);
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s %d %d", menu.getName(), orderAmount.getAmount(), getPrice());
+    }
 }

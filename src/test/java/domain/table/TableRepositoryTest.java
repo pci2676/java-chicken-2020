@@ -16,19 +16,19 @@ class TableRepositoryTest {
     @Test
     void findByNumber() {
         //given
-        Long number = 1L;
+        Integer number = 1;
 
         //when
         Table actual = TableRepository.findByNumber(number);
 
         //then
-        assertThat(actual.equalNumber(1L)).isTrue();
+        assertThat(actual.equalNumber(1)).isTrue();
     }
 
     @DisplayName("존재하지 않는 테이블 조회시 Exception")
     @ParameterizedTest
     @CsvSource(value = {"0", "9"})
-    void name(Long number) {
+    void name(Integer number) {
         assertThatThrownBy(() -> TableRepository.findByNumber(number))
                 .isInstanceOf(NoSuchElementException.class)
                 .hasMessage("%d는 존재하지 않는 테이블 번호입니다.", number);

@@ -12,9 +12,9 @@ class MenuTest {
     @DisplayName("메뉴가 보유중인 번호인지 확인하기")
     @ParameterizedTest
     @CsvSource(value = {"1,true", "2,false"})
-    void equalNumber(Long number, boolean expect) {
+    void equalNumber(Integer number, boolean expect) {
         //given
-        Menu menu = MenuRepository.findByNumber(1L);
+        Menu menu = MenuRepository.findByNumber(1);
 
         //when
         boolean actual = menu.equalNumber(number);
@@ -28,7 +28,7 @@ class MenuTest {
     void calculatePrice() {
         //given
         int defaultPrice = 1000;
-        Menu menu = new Menu(1L, "test", Category.CHICKEN, defaultPrice);
+        Menu menu = new Menu(1, "test", Category.CHICKEN, defaultPrice);
         int amount = 2;
 
         //when
@@ -44,7 +44,7 @@ class MenuTest {
     @CsvSource(value = {"CHICKEN,true", "BEVERAGE,false"})
     void name(Category category, boolean expect) {
         //given
-        Menu menu = new Menu(1L, "test", category, 1000);
+        Menu menu = new Menu(1, "test", category, 1000);
 
         //when
         boolean actual = menu.isChicken();

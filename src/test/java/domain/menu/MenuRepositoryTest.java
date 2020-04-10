@@ -14,20 +14,20 @@ class MenuRepositoryTest {
     @Test
     void findByNumber() {
         //given
-        Long number = 1L;
+        Integer number = 1;
 
         //when
         Menu actual = MenuRepository.findByNumber(number);
 
         //then
-        assertThat(actual).isEqualTo(new Menu(1L, "후라이드", Category.CHICKEN, 16_000));
+        assertThat(actual).isEqualTo(new Menu(1, "후라이드", Category.CHICKEN, 16_000));
     }
 
     @DisplayName("존재하지 않는 메뉴번호로 조회시 Exception")
     @Test
     void name() {
         //given
-        Long number = -1L;
+        Integer number = -1;
 
         //then
         assertThatThrownBy(() -> MenuRepository.findByNumber(number))
