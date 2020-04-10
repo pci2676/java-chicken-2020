@@ -56,4 +56,20 @@ class OrderLineTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("동일 메뉴에 대해서만 갯수를 추가할 수 있습니다.%s기존 메뉴 : %s, 추가시도 메뉴 : %s", System.lineSeparator(), orderLine.getMenuName(), otherOrderLine.getMenuName());
     }
+
+    @DisplayName("해당 메뉴의 총 주문 금액을 반환한다.")
+    @Test
+    void name6() {
+        //given
+        Menu menu = MenuRepository.findByNumber(1L);
+        int amount = 2;
+        OrderLine orderLine = new OrderLine(menu, amount);
+
+        //when
+        int price = orderLine.getPrice();
+        int expect = menu.getPrice() * amount;
+
+        //then
+        assertThat(price).isEqualTo(expect);
+    }
 }

@@ -30,6 +30,10 @@ public class Menu {
         return this.name;
     }
 
+    public int getPrice() {
+        return this.price;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
@@ -49,5 +53,9 @@ public class Menu {
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
+    }
+
+    public int calculatePrice(final int amount) {
+        return this.price * amount;
     }
 }

@@ -41,4 +41,8 @@ public class OrderLine {
     public int hashCode() {
         return Objects.hash(menu, orderAmount);
     }
+
+    public int getPrice() {
+        return this.menu.calculatePrice(this.orderAmount.getAmount());
+    }
 }
