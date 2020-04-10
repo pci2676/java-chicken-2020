@@ -23,6 +23,10 @@ public class Orders {
         return this.orderLines.hasOrderLine();
     }
 
+    public int getPrice() {
+        return this.orderLines.calculatePrice();
+    }
+
     public int getChickenAmount() {
         return this.orderLines.getChickenAmount();
     }

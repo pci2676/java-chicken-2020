@@ -43,9 +43,10 @@ public class OrderLines {
     }
 
     public int getChickenAmount() {
-        return (int) this.orderLines.stream()
+        return this.orderLines.stream()
                 .filter(OrderLine::isChicken)
-                .count();
+                .map(OrderLine::getAmount)
+                .reduce(0, Integer::sum);
     }
 
     @Override
