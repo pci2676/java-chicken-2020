@@ -26,15 +26,7 @@ class TableTest {
         //then
     }
 
-    @DisplayName("단일 메뉴의 주문 수량이 0개 이하인 경우 Exception")
-    @Test
-    void name1() {
-        //given
 
-        //when
-
-        //then
-    }
 
     @DisplayName("단일 메뉴의 주문 수량이 99개를 초과하면 Exception")
     @Test
