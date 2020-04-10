@@ -1,6 +1,7 @@
 package domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -12,9 +13,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class TableRepositoryTest {
 
     @DisplayName("존재하는 테이블 번호로 테이블 가져오기")
-    @ParameterizedTest
-    @CsvSource(value = {"1", "8"})
-    void findByNumber(Long number) {
+    @Test
+    void findByNumber() {
+        //given
+        Long number = 1L;
+
         //when
         Table actual = TableRepository.findByNumber(number);
 

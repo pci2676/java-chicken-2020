@@ -9,7 +9,7 @@ class TableTest {
     @Test
     void name0() {
         //given
-
+        Table table = TableRepository.findByNumber(1L);
 
         //when
 
