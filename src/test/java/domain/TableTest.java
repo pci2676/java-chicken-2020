@@ -3,48 +3,31 @@ package domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class TableTest {
 
-    @DisplayName("단일 메뉴 주문 하기")
+    @DisplayName("초기상태의 테이블은 주문이 비어있다.")
     @Test
-    void name0() {
+    void name() {
+        //given
+        Table table = TableRepository.findByNumber(1L);
+
+        //then
+        assertThat(table.hasOrder()).isEqualTo(false);
+    }
+
+    @DisplayName("주문을 추가하면 테이블의 주문은 비어있지 않다.")
+    @Test
+    void name2() {
         //given
         Table table = TableRepository.findByNumber(1L);
 
         //when
+        Menu menu = MenuRepository.findByNumber(1L);
+        table.addOrder(new OrderLine(menu, 1));
 
         //then
-    }
-
-    @DisplayName("복합 메뉴 주문 하기")
-    @Test
-    void name() {
-        //given
-
-        //when
-
-        //then
-    }
-
-
-
-    @DisplayName("단일 메뉴의 주문 수량이 99개를 초과하면 Exception")
-    @Test
-    void name2() {
-        //given
-
-        //when
-
-        //then
-    }
-
-    @DisplayName("기존 주문이 존재하던 테이블 주문을 추가하여 단일 메뉴의 갯수가 99개를 넘어가면 Exception 발생")
-    @Test
-    void name3() {
-        //given
-
-        //when
-
-        //then
+        assertThat(table.hasOrder()).isEqualTo(true);
     }
 }

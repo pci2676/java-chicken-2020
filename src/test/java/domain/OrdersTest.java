@@ -36,7 +36,7 @@ class OrdersTest {
         //when
         Menu otherMenu = MenuRepository.findByNumber(2L);
         OrderLine otherOrderLine = new OrderLine(otherMenu, 1);
-        orders.addOrderLine(otherOrderLine);
+        orders.add(otherOrderLine);
 
         //then
         assertThat(orders).isEqualTo(new Orders(Arrays.asList(orderLine, otherOrderLine)));

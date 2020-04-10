@@ -32,6 +32,10 @@ public class OrderLines {
                 .anyMatch(aOrderLine -> aOrderLine.equals(orderLine));
     }
 
+    public boolean hasOrderLine() {
+        return !this.orderLines.isEmpty();
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;

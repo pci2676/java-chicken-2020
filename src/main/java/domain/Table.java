@@ -9,6 +9,7 @@ import java.util.Objects;
  */
 public class Table {
     private final Long number;
+    private final Orders orders = Orders.empty();
 
     public Table(final Long number) {
         this.number = number;
@@ -18,9 +19,12 @@ public class Table {
         return this.number.equals(number);
     }
 
-    @Override
-    public String toString() {
-        return Long.toString(number);
+    public void addOrder(final OrderLine orderLine) {
+        this.orders.add(orderLine);
+    }
+
+    public boolean hasOrder() {
+        return this.orders.hasOrderLine();
     }
 
     @Override
@@ -28,11 +32,12 @@ public class Table {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final Table table = (Table) o;
-        return Objects.equals(number, table.number);
+        return Objects.equals(number, table.number) &&
+                Objects.equals(orders, table.orders);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(number);
+        return Objects.hash(number, orders);
     }
 }

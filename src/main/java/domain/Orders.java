@@ -1,13 +1,26 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Orders {
-    private final List<OrderLine> orderLines;
+    private final OrderLines orderLines;
 
-    public Orders(final List<OrderLine> OrderLines) {
-        this.orderLines = OrderLines;
+    public Orders(final List<OrderLine> orderLines) {
+        this.orderLines = new OrderLines(orderLines);
+    }
+
+    public static Orders empty() {
+        return new Orders(new ArrayList<>());
+    }
+
+    public void add(final OrderLine orderLine) {
+        this.orderLines.add(orderLine);
+    }
+
+    public boolean hasOrderLine() {
+        return this.orderLines.hasOrderLine();
     }
 
     @Override
@@ -21,9 +34,5 @@ public class Orders {
     @Override
     public int hashCode() {
         return Objects.hash(orderLines);
-    }
-
-    public void addOrderLine(final OrderLine orderLine) {
-        this.orderLines.add(orderLine);
     }
 }
