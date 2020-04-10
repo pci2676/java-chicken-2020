@@ -26,12 +26,16 @@ public class Menu {
         return this.number.equals(number);
     }
 
-    public String getName() {
-        return this.name;
+    public int calculatePrice(final int amount) {
+        return this.price * amount;
     }
 
-    public int getPrice() {
-        return this.price;
+    public boolean isChicken() {
+        return category.isChicken();
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     @Override
@@ -53,9 +57,5 @@ public class Menu {
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
-    }
-
-    public int calculatePrice(final int amount) {
-        return this.price * amount;
     }
 }

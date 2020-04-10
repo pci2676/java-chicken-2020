@@ -1,5 +1,6 @@
 package domain.orders;
 
+import domain.menu.Category;
 import domain.menu.Menu;
 import domain.menu.MenuRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -61,13 +62,14 @@ class OrderLineTest {
     @Test
     void name6() {
         //given
-        Menu menu = MenuRepository.findByNumber(1L);
+        int defaultPrice = 1000;
+        Menu menu = new Menu(1L, "test", Category.CHICKEN, defaultPrice);
         int amount = 2;
         OrderLine orderLine = new OrderLine(menu, amount);
 
         //when
         int price = orderLine.getPrice();
-        int expect = menu.getPrice() * amount;
+        int expect = defaultPrice * amount;
 
         //then
         assertThat(price).isEqualTo(expect);
