@@ -42,4 +42,26 @@ class OrderLinesTest {
         //then
         assertThat(orderLines).isEqualTo(new OrderLines(Arrays.asList(new OrderLine(menu, 1), new OrderLine(otherMenu, 1))));
     }
+
+    @DisplayName("복합 메뉴에 대한 할인 전 총 주문 금액 구하기")
+    @Test
+    void name2() {
+        //given
+        Menu menu1 = MenuRepository.findByNumber(1L);
+        int amount1 = 2;
+        OrderLine orderLine1 = new OrderLine(menu1, amount1);
+
+        Menu menu2 = MenuRepository.findByNumber(2L);
+        int amount2 = 2;
+        OrderLine orderLine2 = new OrderLine(menu2, amount2);
+
+        OrderLines orderLines = new OrderLines(new ArrayList<>(Arrays.asList(orderLine1, orderLine2)));
+
+        //when
+        int price = orderLines.calculatePrice();
+        int expect = menu1.calculatePrice(amount1) + menu2.calculatePrice(amount2);
+
+        //then
+        assertThat(price).isEqualTo(expect);
+    }
 }

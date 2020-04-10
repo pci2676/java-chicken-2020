@@ -36,6 +36,12 @@ public class OrderLines {
         return !this.orderLines.isEmpty();
     }
 
+    public int calculatePrice() {
+        return this.orderLines.stream()
+                .mapToInt(OrderLine::getPrice)
+                .reduce(0, Integer::sum);
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;

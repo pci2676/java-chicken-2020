@@ -28,6 +28,10 @@ public class OrderLine {
         return this.menu.getName();
     }
 
+    public int getPrice() {
+        return this.menu.calculatePrice(this.orderAmount.getAmount());
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
@@ -40,9 +44,5 @@ public class OrderLine {
     @Override
     public int hashCode() {
         return Objects.hash(menu, orderAmount);
-    }
-
-    public int getPrice() {
-        return this.menu.calculatePrice(this.orderAmount.getAmount());
     }
 }

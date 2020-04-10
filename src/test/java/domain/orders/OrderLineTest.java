@@ -57,7 +57,7 @@ class OrderLineTest {
                 .hasMessage("동일 메뉴에 대해서만 갯수를 추가할 수 있습니다.%s기존 메뉴 : %s, 추가시도 메뉴 : %s", System.lineSeparator(), orderLine.getMenuName(), otherOrderLine.getMenuName());
     }
 
-    @DisplayName("해당 메뉴의 총 주문 금액을 반환한다.")
+    @DisplayName("해당 메뉴의 할인 전 총 주문 금액을 반환한다.")
     @Test
     void name6() {
         //given
