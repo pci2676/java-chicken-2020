@@ -24,6 +24,28 @@ public class OrderLine {
         }
     }
 
+    public void add(final OrderLine orderLine) {
+        checkSameMenu(orderLine);
+        checkMaximumOver(orderLine.amount);
+        this.amount += orderLine.amount;
+    }
+
+    private void checkSameMenu(final OrderLine orderLine) {
+        if (!this.menu.equals(orderLine.menu)) {
+            throw new IllegalArgumentException(String.format("동일 메뉴에 대해서만 갯수를 추가할 수 있습니다.%s기존 메뉴 : %s, 추가시도 메뉴 : %s", System.lineSeparator(), this.getMenuName(), orderLine.getMenuName()));
+        }
+    }
+
+    private void checkMaximumOver(final int addAmount) {
+        if (this.amount + addAmount > MAXIMUM_ORDER_AMOUNT) {
+            throw new IllegalStateException(String.format("단일 메뉴는 99이상 주문 할 수 없습니다.%s현재 갯수 : %d, 추가 갯수 : %d", System.lineSeparator(), this.amount, addAmount));
+        }
+    }
+
+    public String getMenuName() {
+        return this.menu.getName();
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
@@ -36,16 +58,5 @@ public class OrderLine {
     @Override
     public int hashCode() {
         return Objects.hash(menu, amount);
-    }
-
-    public void addAmount(final int addAmount) {
-        checkMaximumOver(addAmount);
-        this.amount += addAmount;
-    }
-
-    private void checkMaximumOver(final int addAmount) {
-        if (this.amount + addAmount > MAXIMUM_ORDER_AMOUNT) {
-            throw new IllegalStateException(String.format("단일 메뉴는 99이상 주문 할 수 없습니다.%s현재 갯수 : %d, 추가 갯수 : %d", System.lineSeparator(), this.amount, addAmount));
-        }
     }
 }

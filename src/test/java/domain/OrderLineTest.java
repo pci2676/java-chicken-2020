@@ -58,13 +58,13 @@ class OrderLineTest {
         OrderLine orderLine = new OrderLine(menu, givenAmount);
 
         //when
-        orderLine.addAmount(1);
+        orderLine.add(new OrderLine(menu, 1));
 
         //then
         assertThat(orderLine).isEqualTo(new OrderLine(menu, 2));
     }
 
-    @DisplayName("추가된 단일 메뉴의 주문 수량의 합이 99개를 넘어가는 경우 Exception 발생")
+    @DisplayName("단일메뉴를 추가주문하여 주문 수량의 합이 99개를 넘어가는 경우 Exception 발생")
     @Test
     void name3() {
         //given
@@ -74,8 +74,26 @@ class OrderLineTest {
         int addAmount = 1;
 
         //then
-        assertThatThrownBy(() -> orderLine.addAmount(addAmount))
+        assertThatThrownBy(() -> orderLine.add(new OrderLine(menu, addAmount)))
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessage("단일 메뉴는 99이상 주문 할 수 없습니다.%s현재 갯수 : %d, 추가 갯수 : %d", System.lineSeparator(), givenAmount, addAmount);
+    }
+
+    @DisplayName("서로 다른 종류의 메뉴를 추가하려고 하면 Exception 발생")
+    @Test
+    void name5() {
+        //given
+        Menu menu = MenuRepository.findByNumber(1L);
+        int givenAmount = 1;
+        OrderLine orderLine = new OrderLine(menu, givenAmount);
+
+        //when
+        Menu otherMenu = MenuRepository.findByNumber(2L);
+        OrderLine otherOrderLine = new OrderLine(otherMenu, 1);
+
+        //then
+        assertThatThrownBy(() -> orderLine.add(otherOrderLine))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("동일 메뉴에 대해서만 갯수를 추가할 수 있습니다.%s기존 메뉴 : %s, 추가시도 메뉴 : %s", System.lineSeparator(), orderLine.getMenuName(), otherOrderLine.getMenuName());
     }
 }
