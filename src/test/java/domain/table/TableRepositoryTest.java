@@ -22,7 +22,7 @@ class TableRepositoryTest {
         Table actual = TableRepository.findByNumber(number);
 
         //then
-        assertThat(actual).isEqualTo(new Table(number));
+        assertThat(actual.equalNumber(1L)).isTrue();
     }
 
     @DisplayName("존재하지 않는 테이블 조회시 Exception")
