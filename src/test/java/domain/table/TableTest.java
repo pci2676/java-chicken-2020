@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -114,9 +116,14 @@ class TableTest {
     @Test
     void getOrders() {
         //given
+        Table table = new Table(1);
+        table.addOrder(new OrderLine(new Menu(1, "test", Category.CHICKEN, 10), 1));
 
         //when
+        List<OrderLine> orders = table.getOrders();
 
         //then
+        assertThat(orders).hasSize(1);
+
     }
 }

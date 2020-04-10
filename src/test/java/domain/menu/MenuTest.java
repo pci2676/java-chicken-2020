@@ -52,4 +52,13 @@ class MenuTest {
         //then
         assertThat(actual).isEqualTo(expect);
     }
+
+    @Test
+    void testToString() {
+        //given
+
+        //when
+
+        //then
+    }
 }
