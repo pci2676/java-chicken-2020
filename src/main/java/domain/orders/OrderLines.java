@@ -1,4 +1,4 @@
-package domain;
+package domain.orders;
 
 import java.util.List;
 import java.util.NoSuchElementException;

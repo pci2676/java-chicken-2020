@@ -1,4 +1,7 @@
-package domain;
+package domain.table;
+
+import domain.orders.OrderLine;
+import domain.orders.Orders;
 
 import java.util.Objects;
 

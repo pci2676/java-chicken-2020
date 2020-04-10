@@ -1,5 +1,7 @@
-package domain;
+package domain.orders;
 
+import domain.menu.Menu;
+import domain.menu.MenuRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package domain;
+package domain.menu;
 
 import java.util.Objects;
 

@@ -1,4 +1,6 @@
-package domain;
+package domain.orders;
+
+import domain.menu.Menu;
 
 import java.util.Objects;
 
