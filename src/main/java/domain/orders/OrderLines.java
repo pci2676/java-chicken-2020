@@ -42,6 +42,12 @@ public class OrderLines {
                 .reduce(0, Integer::sum);
     }
 
+    public int getChickenAmount() {
+        return (int) this.orderLines.stream()
+                .filter(OrderLine::isChicken)
+                .count();
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;

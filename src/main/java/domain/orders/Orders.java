@@ -23,6 +23,10 @@ public class Orders {
         return this.orderLines.hasOrderLine();
     }
 
+    public int getChickenAmount() {
+        return this.orderLines.getChickenAmount();
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;

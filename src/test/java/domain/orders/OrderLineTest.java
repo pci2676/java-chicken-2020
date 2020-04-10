@@ -74,4 +74,19 @@ class OrderLineTest {
         //then
         assertThat(price).isEqualTo(expect);
     }
+
+    @DisplayName("현재 메뉴의 총 갯수를 구한다.")
+    @Test
+    void name7() {
+        //given
+        Menu menu = MenuRepository.findByNumber(1L);
+        int amount = 2;
+        OrderLine orderLine = new OrderLine(menu, amount);
+
+        //when
+        int actual = orderLine.getAmount();
+
+        //then
+        assertThat(actual).isEqualTo(amount);
+    }
 }

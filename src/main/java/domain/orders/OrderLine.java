@@ -32,6 +32,14 @@ public class OrderLine {
         return this.menu.calculatePrice(this.orderAmount.getAmount());
     }
 
+    public int getAmount() {
+        return orderAmount.getAmount();
+    }
+
+    public boolean isChicken() {
+        return menu.isChicken();
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
