@@ -83,4 +83,40 @@ class TableTest {
         //then
         assertThat(actual).isEqualTo(expect);
     }
+
+    @DisplayName("주문 내역 비우기")
+    @Test
+    void clear() {
+        //given
+        Table table = new Table(1);
+        table.addOrder(new OrderLine(new Menu(1, "test", Category.CHICKEN, 10), 1));
+
+        //when
+        table.clear();
+        boolean actual = table.hasOrder();
+
+        //then
+        assertThat(actual).isFalse();
+    }
+
+    @Test
+    void getNumber() {
+        //given
+        Table table = new Table(1);
+
+        //when
+        int number = table.getNumber();
+
+        //then
+        assertThat(number).isEqualTo(1);
+    }
+
+    @Test
+    void getOrders() {
+        //given
+
+        //when
+
+        //then
+    }
 }

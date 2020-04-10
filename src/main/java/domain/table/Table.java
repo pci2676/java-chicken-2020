@@ -6,7 +6,6 @@ import domain.orders.Orders;
 import domain.payment.PaymentMethod;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * 제약조건
@@ -48,20 +47,6 @@ public class Table {
 
     public List<OrderLine> getOrders() {
         return orders.getOrderLines();
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        final Table table = (Table) o;
-        return Objects.equals(number, table.number) &&
-                Objects.equals(orders, table.orders);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(number, orders);
     }
 
     private void checkOrdersEmpty() {
