@@ -56,9 +56,12 @@ class MenuTest {
     @Test
     void testToString() {
         //given
+        Menu menu = new Menu(1, "test", Category.CHICKEN, 1000);
 
         //when
+        String string = menu.toString();
 
         //then
+        assertThat(string).isEqualTo(Category.CHICKEN.toString() + " " + 1 + " - " + "test" + " : " + 1000 + "원");
     }
 }
