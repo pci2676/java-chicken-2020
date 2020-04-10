@@ -12,7 +12,7 @@ public class CashPaymentMethodPolicy implements PaymentMethodDiscountPolicy {
     }
 
     @Override
-    public double discount(final int price) {
+    public double discount(final double price) {
         return price * DISCOUNT_RATE;
     }
 }

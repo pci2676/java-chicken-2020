@@ -1,7 +1,9 @@
 package domain.table;
 
+import domain.discount.DiscountGroup;
 import domain.orders.OrderLine;
 import domain.orders.Orders;
+import domain.payment.PaymentMethod;
 
 import java.util.Objects;
 
@@ -30,6 +32,11 @@ public class Table {
         return this.orders.hasOrderLine();
     }
 
+    public double calculatePrice(PaymentMethod paymentMethod) {
+        checkOrdersEmpty();
+        return DiscountGroup.discount(this.orders, paymentMethod);
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
@@ -42,5 +49,11 @@ public class Table {
     @Override
     public int hashCode() {
         return Objects.hash(number, orders);
+    }
+
+    private void checkOrdersEmpty() {
+        if (!hasOrder()) {
+            throw new IllegalStateException("주문내역이 존재하지 않습니다.");
+        }
     }
 }
