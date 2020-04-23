@@ -22,14 +22,14 @@ public class OrderLines {
 
     private OrderLine findSameOrderLine(OrderLine orderLine) {
         return this.orderLines.stream()
-                .filter(aOrderLine -> aOrderLine.equals(orderLine))
+                .filter(aOrderLine -> aOrderLine.isEqualMenu(orderLine))
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException(String.format("존재하지 않는 주문(%s)입니다.", orderLine.getMenuName())));
     }
 
     private boolean hasSameOrderLine(OrderLine orderLine) {
         return this.orderLines.stream()
-                .anyMatch(aOrderLine -> aOrderLine.equals(orderLine));
+                .anyMatch(aOrderLine -> aOrderLine.isEqualMenu(orderLine));
     }
 
     public boolean hasOrderLine() {

@@ -58,4 +58,8 @@ public class OrderLine {
     public String toString() {
         return String.format("%s %d %d", menu.getName(), orderAmount.getAmount(), getPrice());
     }
+
+    public boolean isEqualMenu(final OrderLine orderLine) {
+        return this.menu.equals(orderLine.menu);
+    }
 }
